@@ -63,33 +63,33 @@ export const FACULTY = [
   // Row 1 - HOD (1 person)
   {
     id: 1,
-    name: 'Dr. Rajesh Kumar',
+    name: 'Dr. Basavesha D',
     designation: 'Professor & Head of Department',
     qualification: 'Ph.D. in Computer Science',
     specialization: 'Artificial Intelligence, Machine Learning',
-    image: '/images/faculty/rajesh-kumar.jpg',
+    image: '/images/faculty/Dr.Basavesha.png',
     isHoD: true,
   },
   // Row 2 - 2 Female, 1 Male
   {
     id: 2,
-    name: 'Dr. Priya Sharma',
+    name: 'Dr. R Rajeswari',
     designation: 'Associate Professor',
     qualification: 'Ph.D. in Data Science',
     specialization: 'Big Data Analytics, Cloud Computing',
-    image: '/images/faculty/priya-sharma.jpg',
+    image: '/images/faculty/Dr.R.Rajeswari.png',
   },
   {
     id: 3,
-    name: 'Dr. Sneha Gupta',
+    name: 'Dr. Kiran G M',
     designation: 'Assistant Professor',
     qualification: 'Ph.D. in IoT & Embedded Systems',
     specialization: 'IoT, Embedded Systems, Robotics',
-    image: '/images/faculty/sneha-gupta.jpg',
+    image: '/images/faculty/Dr.Kiran-G-M.png',
   },
   {
     id: 4,
-    name: 'Prof. Amit Patel',
+    name: 'Dr. Manjula H Nebagiri',
     designation: 'Senior Assistant Professor',
     qualification: 'M.Tech in Software Engineering',
     specialization: 'Web Development, Cyber Security',
@@ -98,7 +98,7 @@ export const FACULTY = [
   // Row 3 - 3 Male, 1 Female
   {
     id: 5,
-    name: 'Prof. Rohit Singh',
+    name: 'Prof. C V Shanmukaswamy',
     designation: 'Assistant Professor',
     qualification: 'M.Tech in Computer Networks',
     specialization: 'Network Security, 5G Technology',
@@ -106,7 +106,7 @@ export const FACULTY = [
   },
   {
     id: 6,
-    name: 'Prof. Aniruddh Kumar',
+    name: 'Prof. Suthan R',
     designation: 'Assistant Professor',
     qualification: 'M.Tech in Software Development',
     specialization: 'DevOps, Containerization, Kubernetes',
@@ -114,7 +114,7 @@ export const FACULTY = [
   },
   {
     id: 7,
-    name: 'Prof. Vikram Desai',
+    name: 'Prof. Chethan M S',
     designation: 'Lecturer',
     qualification: 'M.Tech in Web Technologies',
     specialization: 'Full Stack Development, MERN Stack',
@@ -122,7 +122,7 @@ export const FACULTY = [
   },
   {
     id: 8,
-    name: 'Dr. Kavya Reddy',
+    name: 'Prof. Prathibha T S',
     designation: 'Assistant Professor',
     qualification: 'Ph.D. in Cybersecurity',
     specialization: 'Ethical Hacking, Network Security',
@@ -131,7 +131,7 @@ export const FACULTY = [
   // Row 4 - 3 Female, 1 Male
   {
     id: 9,
-    name: 'Dr. Anjali Verma',
+    name: 'Prof. Rashmi N',
     designation: 'Assistant Professor',
     qualification: 'Ph.D. in Database Systems',
     specialization: 'NoSQL, Database Design, Big Data',
@@ -139,7 +139,7 @@ export const FACULTY = [
   },
   {
     id: 10,
-    name: 'Prof. Meera Nair',
+    name: 'Prof. Mamatha L',
     designation: 'Lecturer',
     qualification: 'M.Tech in Mobile Computing',
     specialization: 'Mobile App Development, Flutter',
@@ -147,7 +147,7 @@ export const FACULTY = [
   },
   {
     id: 11,
-    name: 'Dr. Divya Sharma',
+    name: 'Prof. Ramachandra H Y',
     designation: 'Assistant Professor',
     qualification: 'Ph.D. in Computer Vision',
     specialization: 'Image Processing, Deep Learning',
@@ -155,7 +155,15 @@ export const FACULTY = [
   },
   {
     id: 12,
-    name: 'Prof. Arjun Pathak',
+    name: 'Prof. Sneha S R',
+    designation: 'Lecturer',
+    qualification: 'M.Tech in Compiler Design',
+    specialization: 'Programming Languages, Algorithms',
+    image: '/images/faculty/arjun-pathak.jpg',
+  },
+   {
+    id: 13,
+    name: 'Prof. Kiran S',
     designation: 'Lecturer',
     qualification: 'M.Tech in Compiler Design',
     specialization: 'Programming Languages, Algorithms',
@@ -225,7 +233,7 @@ export const ACHIEVEMENTS = {
 export const EVENTS = [
   {
     id: 1,
-    name: 'Shrishtav',
+    name: 'Shriutsav',
     fullName: 'Annual Technical Festival',
     description: 'Showcase of innovation and creativity with competitions, workshops, and innovation showcases.',
     date: 'March 2024',
@@ -306,7 +314,7 @@ export const PLACEMENT_STATS = {
 
 export const PLACEMENT_SUCCESS_STORIES = [
   {
-    name: 'Arun Kumar',
+    name: 'Avula Amarnath Reddy',
     company: 'Google',
     position: 'Senior Software Engineer',
     story: 'Started as an intern, now leading product teams',
@@ -314,7 +322,7 @@ export const PLACEMENT_SUCCESS_STORIES = [
     batch: '2019',
   },
   {
-    name: 'Priya Sharma',
+    name: 'Monika',
     company: 'Microsoft',
     position: 'Cloud Architect',
     story: 'Building next-gen cloud infrastructure',
@@ -322,7 +330,7 @@ export const PLACEMENT_SUCCESS_STORIES = [
     batch: '2020',
   },
   {
-    name: 'Rajesh Patel',
+    name: 'Viveka G V',
     company: 'Startup Founder',
     position: 'CEO & Co-founder',
     story: 'Built a ₹10 Cr valued tech startup',

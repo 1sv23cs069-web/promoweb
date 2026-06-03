@@ -132,6 +132,11 @@ export default function Faculty() {
 
 function FacultyCard({ faculty, index }) {
   const [hovering, setHovering] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Determine if this is HOD for larger image
+  const isHoD = faculty.isHoD;
+  const imageSizeClass = isHoD ? 'w-40 h-40' : 'w-32 h-32';
 
   return (
     <motion.div
@@ -155,16 +160,26 @@ function FacultyCard({ faculty, index }) {
           className="w-full h-full bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-center text-center border border-gray-200"
         >
           {/* Image Placeholder */}
-          <div className="w-24 h-24 rounded-full mb-4 bg-gradient-to-br from-forest-green/20 to-academic-gold/20 flex items-center justify-center overflow-hidden border-4 border-forest-green">
-            <img
-              src={faculty.image}
-              alt={faculty.name}
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                e.target.style.display = 'none';
-              }}
-            />
-            <span className="text-4xl text-gray-400">📷</span>
+          <div className={`${imageSizeClass} rounded-full mb-4 bg-gradient-to-br from-forest-green/20 to-academic-gold/20 flex items-center justify-center overflow-hidden border-4 border-forest-green flex-shrink-0`}>
+            {imageLoaded ? (
+              <img
+                src={faculty.image}
+                alt={faculty.name}
+                className="w-full h-full object-cover"
+                onError={() => setImageLoaded(false)}
+              />
+            ) : (
+              <>
+                <img
+                  src={faculty.image}
+                  alt={faculty.name}
+                  className="w-full h-full object-cover hidden"
+                  onLoad={() => setImageLoaded(true)}
+                  onError={() => setImageLoaded(false)}
+                />
+                <span className="text-5xl">📷</span>
+              </>
+            )}
           </div>
 
           <h3 className="text-lg font-bold text-dark-charcoal mb-1">{faculty.name}</h3>
