@@ -77,7 +77,7 @@ export const FACULTY = [
     designation: 'Associate Professor',
     qualification: 'Ph.D. in Data Science',
     specialization: 'Big Data Analytics, Cloud Computing',
-    image: '/images/faculty/Dr.R.Rajeswari.png',
+    image: '/images/faculty/Rajeshwari.png',
   },
   {
     id: 3,
@@ -85,7 +85,7 @@ export const FACULTY = [
     designation: 'Assistant Professor',
     qualification: 'Ph.D. in IoT & Embedded Systems',
     specialization: 'IoT, Embedded Systems, Robotics',
-    image: '/images/faculty/Dr.Kiran-G-M.png',
+    image: '/images/faculty/Kiran.png',
   },
   {
     id: 4,
@@ -93,7 +93,7 @@ export const FACULTY = [
     designation: 'Senior Assistant Professor',
     qualification: 'M.Tech in Software Engineering',
     specialization: 'Web Development, Cyber Security',
-    image: '/images/faculty/amit-patel.jpg',
+    image: '/images/faculty/Manjula.png',
   },
   // Row 3 - 3 Male, 1 Female
   {
@@ -102,7 +102,7 @@ export const FACULTY = [
     designation: 'Assistant Professor',
     qualification: 'M.Tech in Computer Networks',
     specialization: 'Network Security, 5G Technology',
-    image: '/images/faculty/rohit-singh.jpg',
+    image: '/images/faculty/CVS.png',
   },
   {
     id: 6,
@@ -110,7 +110,7 @@ export const FACULTY = [
     designation: 'Assistant Professor',
     qualification: 'M.Tech in Software Development',
     specialization: 'DevOps, Containerization, Kubernetes',
-    image: '/images/faculty/aniruddh-kumar.jpg',
+    image: '/images/faculty/suthan.png',
   },
   {
     id: 7,
@@ -118,7 +118,7 @@ export const FACULTY = [
     designation: 'Lecturer',
     qualification: 'M.Tech in Web Technologies',
     specialization: 'Full Stack Development, MERN Stack',
-    image: '/images/faculty/vikram-desai.jpg',
+    image: '/images/faculty/Chethanms.png',
   },
   {
     id: 8,
@@ -126,7 +126,7 @@ export const FACULTY = [
     designation: 'Assistant Professor',
     qualification: 'Ph.D. in Cybersecurity',
     specialization: 'Ethical Hacking, Network Security',
-    image: '/images/faculty/kavya-reddy.jpg',
+    image: '/images/faculty/prathiba.png',
   },
   // Row 4 - 3 Female, 1 Male
   {
@@ -135,7 +135,7 @@ export const FACULTY = [
     designation: 'Assistant Professor',
     qualification: 'Ph.D. in Database Systems',
     specialization: 'NoSQL, Database Design, Big Data',
-    image: '/images/faculty/anjali-verma.jpg',
+    image: '/images/faculty/rashmi.png',
   },
   {
     id: 10,
@@ -143,7 +143,7 @@ export const FACULTY = [
     designation: 'Lecturer',
     qualification: 'M.Tech in Mobile Computing',
     specialization: 'Mobile App Development, Flutter',
-    image: '/images/faculty/meera-nair.jpg',
+    image: '/images/faculty/MamathaL.png',
   },
   {
     id: 11,
@@ -151,7 +151,7 @@ export const FACULTY = [
     designation: 'Assistant Professor',
     qualification: 'Ph.D. in Computer Vision',
     specialization: 'Image Processing, Deep Learning',
-    image: '/images/faculty/divya-sharma.jpg',
+    image: '/images/faculty/RHY.jpg',
   },
   {
     id: 12,
@@ -159,7 +159,7 @@ export const FACULTY = [
     designation: 'Lecturer',
     qualification: 'M.Tech in Compiler Design',
     specialization: 'Programming Languages, Algorithms',
-    image: '/images/faculty/arjun-pathak.jpg',
+    image: '/images/faculty/SnehaSR.jpg',
   },
    {
     id: 13,
@@ -167,7 +167,7 @@ export const FACULTY = [
     designation: 'Lecturer',
     qualification: 'M.Tech in Compiler Design',
     specialization: 'Programming Languages, Algorithms',
-    image: '/images/faculty/arjun-pathak.jpg',
+    image: '/images/faculty/kiran.jpg',
   },
 ];
 
