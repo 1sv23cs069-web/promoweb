@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-dark-charcoal;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-8 py-3 bg-forest-green text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-300 inline-flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 bg-academic-gold text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply px-8 py-3 border-2 border-forest-green text-forest-green font-semibold rounded-lg hover:bg-forest-green hover:text-white transition-all duration-300;
+  }
+
+  .gradient-accent {
+    @apply bg-gradient-to-r from-forest-green to-academic-gold;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:scale-105;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-display font-bold text-dark-charcoal;
+  }
+
+  .section-subtitle {
+    @apply text-xl md:text-2xl text-gray-600 mt-2;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0B8F43;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #086a32;
+}

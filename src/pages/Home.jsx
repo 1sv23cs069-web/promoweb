@@ -1,0 +1,627 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, CheckCircle, Users, BookOpen, TrendingUp, FileText } from 'lucide-react';
+import { GOOGLE_FORM_URL, STATS, WHY_CHOOSE, RECRUITERS, FACULTY, EVENTS, FACILITIES, CREATIVE_CODEX } from '../constants';
+import { fadeUpVariants, staggerContainer, cardHoverVariants } from '../utils/animations';
+import { useCountUp, useScrollReveal } from '../utils/hooks';
+
+export default function Home() {
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <HeroSection />
+
+      {/* Quick Stats */}
+      <QuickStatsSection />
+
+      {/* Why Choose CSE */}
+      <WhyChooseSection />
+
+      {/* Placements Preview */}
+      <PlacementsPreviewSection />
+
+      {/* Faculty Preview */}
+      <FacultyPreviewSection />
+
+      {/* Student Achievements */}
+      <AchievementsSection />
+
+      {/* Events Section */}
+      <EventsSection />
+
+      {/* Creative Codex Spotlight */}
+      <CreativeCodexSection />
+
+      {/* Facilities */}
+      <FacilitiesSection />
+
+      {/* Final CTA */}
+      <FinalCTASection />
+    </div>
+  );
+}
+
+function CreativeCodexSection() {
+  return (
+    <section className="py-16 md:py-24 bg-gradient-to-br from-forest-green/5 to-academic-gold/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center mb-12"
+        >
+          <h2 className="section-title">Meet Creative Codex</h2>
+          <p className="section-subtitle">Driving Innovation Across Our Department</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="bg-white rounded-xl shadow-lg p-8 md:p-12 border-l-4 border-forest-green max-w-3xl mx-auto"
+        >
+          <div className="flex items-center justify-between gap-8">
+            <div>
+              <h3 className="text-2xl font-display font-bold text-dark-charcoal mb-3">{CREATIVE_CODEX.name}</h3>
+              <p className="text-academic-gold font-semibold text-lg mb-3">"{CREATIVE_CODEX.tagline}"</p>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                {CREATIVE_CODEX.description} Our club organizes Shrishtav, IIS symposium, workshops, and mentorship programs that elevate technical excellence and foster innovation across the department.
+              </p>
+              <a href="#" className="btn-primary inline-block">
+                Join Creative Codex
+              </a>
+            </div>
+            <div className="hidden md:flex flex-shrink-0">
+              <div className="text-6xl">💻</div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function HeroSection() {
+  const { yPos } = useParallax();
+
+  return (
+    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-dark-charcoal text-white">
+      {/* Background with parallax */}
+      <motion.div
+        style={{
+          y: yPos,
+          backgroundImage: 'linear-gradient(135deg, #0B8F43 0%, #1E1E1E 100%)',
+        }}
+        className="absolute inset-0 z-0"
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={fadeUpVariants}
+          custom={0}
+        >
+          <h1 className="text-5xl md:text-7xl font-display font-bold mb-4">
+            Department of <span className="text-academic-gold">Computer Science</span> & Engineering
+          </h1>
+        </motion.div>
+
+        <motion.p
+          initial="hidden"
+          animate="visible"
+          variants={fadeUpVariants}
+          custom={0.2}
+          className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto"
+        >
+          Building Future Innovators
+        </motion.p>
+
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={fadeUpVariants}
+          custom={0.4}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <a
+            href={GOOGLE_FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary text-lg"
+          >
+            Apply Now <ArrowRight size={20} />
+          </a>
+          <button className="btn-outline text-lg text-white border-white hover:bg-white hover:text-dark-charcoal">
+            Explore Department
+          </button>
+        </motion.div>
+      </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+      >
+        <div className="text-white text-center">
+          <p className="text-sm mb-2">Scroll to explore</p>
+          <div className="text-2xl">⬇</div>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+function QuickStatsSection() {
+  return (
+    <section className="py-16 md:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center mb-12"
+        >
+          <h2 className="section-title">Our Impact</h2>
+          <p className="section-subtitle">Leading figures that define our excellence</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {STATS.map((stat, index) => (
+            <StatCard key={stat.label} stat={stat} index={index} />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function StatCard({ stat, index }) {
+  const { count, ref } = useCountUp(stat.number);
+
+  const getIcon = (iconName) => {
+    const icons = {
+      'Users': <Users size={40} className="text-forest-green" />,
+      'BookOpen': <BookOpen size={40} className="text-forest-green" />,
+      'TrendingUp': <TrendingUp size={40} className="text-forest-green" />,
+      'FileText': <FileText size={40} className="text-forest-green" />,
+    };
+    return icons[iconName];
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={cardHoverVariants}
+      custom={index}
+      whileHover="hover"
+      className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-lg shadow-lg text-center card-hover"
+    >
+      <div className="mb-4 flex justify-center">
+        {getIcon(stat.icon)}
+      </div>
+      <div className="text-4xl md:text-5xl font-bold text-forest-green mb-2">
+        {count}
+        {stat.label.includes('%') && '%'}
+      </div>
+      <p className="text-gray-600 font-semibold">{stat.label}</p>
+    </motion.div>
+  );
+}
+
+function WhyChooseSection() {
+  return (
+    <section className="py-16 md:py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center mb-12"
+        >
+          <h2 className="section-title">Why Choose CSE?</h2>
+          <p className="section-subtitle">Excellence in education and industry preparation</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
+          {WHY_CHOOSE.map((item, index) => (
+            <WhyChooseCard key={item.title} item={item} index={index} />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function WhyChooseCard({ item, index }) {
+  const icons = {
+    'Briefcase': '💼',
+    'Cpu': '🖥️',
+    'CheckCircle': '✓',
+    'Lightbulb': '💡',
+  };
+
+  return (
+    <motion.div
+      variants={cardHoverVariants}
+      custom={index}
+      whileHover="hover"
+      className="bg-white p-8 rounded-xl shadow-lg card-hover border-l-4 border-forest-green"
+    >
+      <div className="flex items-start gap-4">
+        <div className="text-5xl flex-shrink-0">{icons[item.icon]}</div>
+        <div className="flex-1">
+          <h3 className="text-2xl font-bold text-dark-charcoal mb-2">{item.title}</h3>
+          <p className="text-gray-600 mb-4 leading-relaxed">{item.description}</p>
+          <ul className="space-y-2">
+            {item.features?.map((feature) => (
+              <li key={feature} className="flex items-center gap-2 text-gray-700">
+                <span className="text-forest-green font-bold">→</span>
+                <span className="text-sm">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function PlacementsPreviewSection() {
+  return (
+    <section className="py-16 md:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center mb-12"
+        >
+          <h2 className="section-title">Excellent Placements</h2>
+          <p className="section-subtitle">Leading companies trust our graduates</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-7 gap-4 mb-8">
+            {RECRUITERS.slice(0, 14).map((company, index) => (
+              <motion.div
+                key={company}
+                variants={cardHoverVariants}
+                custom={index * 0.05}
+                className="bg-gray-50 p-4 rounded-lg text-center hover:shadow-lg transition-all"
+              >
+                <p className="font-semibold text-gray-700">{company}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
+        >
+          <PlacementStatCard label="Placement Rate" value="92%" />
+          <PlacementStatCard label="Highest Package" value="₹18 LPA" />
+          <PlacementStatCard label="Average Package" value="₹8.5 LPA" />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center"
+        >
+          <a href="/placements" className="btn-primary text-lg">
+            View Placements <ArrowRight size={20} />
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function PlacementStatCard({ label, value }) {
+  return (
+    <div className="bg-gradient-to-br from-forest-green/10 to-academic-gold/10 p-8 rounded-lg text-center">
+      <p className="text-gray-600 mb-2">{label}</p>
+      <p className="text-4xl font-bold text-forest-green">{value}</p>
+    </div>
+  );
+}
+
+function FacultyPreviewSection() {
+  return (
+    <section className="py-16 md:py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center mb-12"
+        >
+          <h2 className="section-title">Meet Our Faculty</h2>
+          <p className="section-subtitle">Experienced educators shaping future leaders</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8"
+        >
+          {FACULTY.map((faculty, index) => (
+            <FacultyCard key={faculty.id} faculty={faculty} index={index} />
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center"
+        >
+          <a href="/faculty" className="btn-primary text-lg">
+            View All Faculty <ArrowRight size={20} />
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function FacultyCard({ faculty, index }) {
+  return (
+    <motion.div
+      variants={cardHoverVariants}
+      custom={index}
+      whileHover="hover"
+      className="bg-white p-6 rounded-lg shadow-lg card-hover text-center"
+    >
+      <div className="text-6xl mb-4">{faculty.image}</div>
+      <h3 className="text-xl font-bold text-dark-charcoal mb-2">{faculty.name}</h3>
+      <p className="text-forest-green font-semibold text-sm mb-2">{faculty.designation}</p>
+      <p className="text-gray-600 text-xs mb-3">{faculty.qualification}</p>
+      <p className="text-gray-500 text-xs italic">{faculty.specialization}</p>
+    </motion.div>
+  );
+}
+
+function AchievementsSection() {
+  return (
+    <section className="py-16 md:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center mb-12"
+        >
+          <h2 className="section-title">Student Achievements</h2>
+          <p className="section-subtitle">Excellence beyond academics</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8"
+        >
+          {[
+            { emoji: '🏆', title: 'National Hackathon Winners 2024', desc: 'First place in All India Championship' },
+            { emoji: '🥇', title: 'ACM ICPC Qualifiers', desc: '5 students qualified for regionals' },
+            { emoji: '⚽', title: 'Inter-college Sports', desc: 'Multiple championship victories' },
+            { emoji: '🎭', title: 'Cultural Excellence', desc: 'Best technical event organizers' },
+          ].map((item, index) => (
+            <motion.div
+              key={item.title}
+              variants={cardHoverVariants}
+              custom={index}
+              whileHover="hover"
+              className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-lg shadow-lg card-hover"
+            >
+              <div className="text-5xl mb-4">{item.emoji}</div>
+              <h3 className="text-xl font-bold text-dark-charcoal mb-2">{item.title}</h3>
+              <p className="text-gray-600">{item.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center"
+        >
+          <a href="/achievements" className="btn-primary text-lg">
+            View All Achievements <ArrowRight size={20} />
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function EventsSection() {
+  return (
+    <section className="py-16 md:py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center mb-12"
+        >
+          <h2 className="section-title">Featured Events</h2>
+          <p className="section-subtitle">Creating memorable learning experiences</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8"
+        >
+          {EVENTS.slice(0, 4).map((event, index) => (
+            <EventCard key={event.id} event={event} index={index} />
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center"
+        >
+          <a href="/events" className="btn-primary text-lg">
+            View All Events <ArrowRight size={20} />
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function EventCard({ event, index }) {
+  return (
+    <motion.div
+      variants={cardHoverVariants}
+      custom={index}
+      whileHover="hover"
+      className="bg-white p-8 rounded-lg shadow-lg card-hover"
+    >
+      <div className="text-6xl mb-4">{event.image}</div>
+      <h3 className="text-2xl font-bold text-dark-charcoal mb-2">{event.name}</h3>
+      <p className="text-gray-600 mb-3">{event.description}</p>
+      <p className="text-sm text-forest-green font-semibold">{event.date}</p>
+    </motion.div>
+  );
+}
+
+function FacilitiesSection() {
+  return (
+    <section className="py-16 md:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center mb-12"
+        >
+          <h2 className="section-title">World-Class Facilities</h2>
+          <p className="section-subtitle">Infrastructure for excellence</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
+          {FACILITIES.map((facility, index) => (
+            <motion.div
+              key={facility.title}
+              variants={cardHoverVariants}
+              custom={index}
+              whileHover="hover"
+              className="bg-gradient-to-br from-forest-green/5 to-academic-gold/5 p-8 rounded-lg shadow-lg card-hover"
+            >
+              <div className="text-4xl mb-4">
+                {facility.icon === 'Cpu' && '🖥️'}
+                {facility.icon === 'Monitor' && '📱'}
+                {facility.icon === 'Presentation' && '📊'}
+                {facility.icon === 'Cloud' && '☁️'}
+                {facility.icon === 'Zap' && '⚡'}
+                {facility.icon === 'Book' && '📚'}
+              </div>
+              <h3 className="text-xl font-bold text-dark-charcoal mb-2">{facility.title}</h3>
+              <p className="text-gray-600">{facility.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function FinalCTASection() {
+  return (
+    <section className="py-16 md:py-24 bg-gradient-to-r from-forest-green to-academic-gold text-white">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUpVariants}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+      >
+        <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+          Admissions Open 2026
+        </h2>
+        <p className="text-xl mb-8 opacity-90">
+          Join us and shape your future in Computer Science & Engineering
+        </p>
+        <a
+          href={GOOGLE_FORM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-white text-forest-green px-10 py-4 rounded-lg font-bold text-lg hover:bg-opacity-90 transition-all"
+        >
+          Apply Now <ArrowRight size={24} />
+        </a>
+      </motion.div>
+    </section>
+  );
+}
+
+function useParallax() {
+  const [yPos, setYPos] = React.useState(0);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setYPos(window.scrollY * 0.1);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return { yPos };
+}
