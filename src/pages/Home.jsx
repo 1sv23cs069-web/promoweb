@@ -408,7 +408,13 @@ function FacultyCard({ faculty, index }) {
       whileHover="hover"
       className="bg-white p-6 rounded-lg shadow-lg card-hover text-center"
     >
-      <div className="text-6xl mb-4">{faculty.image}</div>
+      <div className="mb-4 flex justify-center">
+  <img
+    src={faculty.image}
+    alt={faculty.name}
+    className="w-24 h-24 rounded-full object-cover border-2 border-forest-green"
+  />
+</div>
       <h3 className="text-xl font-bold text-dark-charcoal mb-2">{faculty.name}</h3>
       <p className="text-forest-green font-semibold text-sm mb-2">{faculty.designation}</p>
       <p className="text-gray-600 text-xs mb-3">{faculty.qualification}</p>
@@ -521,16 +527,27 @@ function EventsSection() {
 function EventCard({ event, index }) {
   return (
     <motion.div
-      variants={cardHoverVariants}
-      custom={index}
-      whileHover="hover"
-      className="bg-white p-8 rounded-lg shadow-lg card-hover"
-    >
-      <div className="text-6xl mb-4">{event.image}</div>
-      <h3 className="text-2xl font-bold text-dark-charcoal mb-2">{event.name}</h3>
-      <p className="text-gray-600 mb-3">{event.description}</p>
-      <p className="text-sm text-forest-green font-semibold">{event.date}</p>
-    </motion.div>
+  variants={cardHoverVariants}
+  custom={index}
+  whileHover="hover"
+  className="bg-white p-8 rounded-lg shadow-lg card-hover"
+>
+  <div className="text-6xl mb-4 text-center">
+    {event.image}
+  </div>
+
+  <h3 className="text-2xl font-bold text-dark-charcoal mb-2">
+    {event.name}
+  </h3>
+
+  <p className="text-gray-600 mb-3">
+    {event.description}
+  </p>
+
+  <p className="text-sm text-forest-green font-semibold">
+    {event.date}
+  </p>
+</motion.div>
   );
 }
 

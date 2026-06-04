@@ -88,6 +88,33 @@ vercel
 - **GitHub Pages**: Push to GitHub and enable Pages
 - **Traditional Hosting**: Upload `dist/` folder via FTP
 
+## 📋 Project Structure
+
+```
+src/
+├── components/          # Reusable components
+│   ├── Navbar.jsx
+│   ├── Footer.jsx
+│   ├── AnnouncementBar.jsx
+│   └── FloatingAdmissionButton.jsx
+├── pages/              # Page components
+│   ├── Home.jsx
+│   ├── About.jsx
+│   ├── Faculty.jsx
+│   ├── Placements.jsx
+│   ├── Achievements.jsx
+│   ├── Events.jsx
+│   └── Contact.jsx
+├── constants/          # App constants and data
+│   └── index.js
+├── utils/             # Utility functions
+│   ├── animations.js
+│   └── hooks.js
+├── App.jsx            # Main app component
+├── main.jsx           # Entry point
+└── index.css          # Global styles
+
+```
 
 ## 🔧 Customization
 
