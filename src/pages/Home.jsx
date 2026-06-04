@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Users, BookOpen, TrendingUp, FileText } from 'lucide-react';
-import { GOOGLE_FORM_URL, STATS, WHY_CHOOSE, RECRUITERS, FACULTY, EVENTS, FACILITIES, CREATIVE_CODEX } from '../constants';
+import { GOOGLE_FORM_URL, STATS, WHY_CHOOSE, RECRUITERS, FACULTY, EVENTS, FACILITIES, CREATIVE_CODEX, DEPARTMENT_TIMELINE, STUDENT_EXCELLENCE, EVENT_CALENDAR, EVENT_HIGHLIGHTS, CREATIVE_CODEX_LOGO } from '../constants';
 import { fadeUpVariants, staggerContainer, cardHoverVariants } from '../utils/animations';
 import { useCountUp, useScrollReveal } from '../utils/hooks';
 
@@ -20,14 +20,26 @@ export default function Home() {
       {/* Placements Preview */}
       <PlacementsPreviewSection />
 
+      {/* Department Timeline */}
+      <DepartmentTimelineSection />
+
       {/* Faculty Preview */}
       <FacultyPreviewSection />
 
       {/* Student Achievements */}
       <AchievementsSection />
 
+      {/* Student Excellence */}
+      <StudentExcellenceSection />
+
       {/* Events Section */}
       <EventsSection />
+
+      {/* Event Calendar */}
+      <EventCalendarSection />
+
+      {/* Event Highlights */}
+      <EventHighlightsSection />
 
       {/* Creative Codex Spotlight */}
       <CreativeCodexSection />
@@ -52,8 +64,8 @@ function CreativeCodexSection() {
           variants={fadeUpVariants}
           className="text-center mb-12"
         >
-          <h2 className="section-title">Meet Creative Codex</h2>
-          <p className="section-subtitle">Driving Innovation Across Our Department</p>
+          <h2 className="section-title">Supported by Creative Codex</h2>
+          <p className="section-subtitle">Many of our student achievements are facilitated through Creative Codex</p>
         </motion.div>
 
         <motion.div
@@ -63,7 +75,7 @@ function CreativeCodexSection() {
           variants={fadeUpVariants}
           className="bg-white rounded-xl shadow-lg p-8 md:p-12 border-l-4 border-forest-green max-w-3xl mx-auto"
         >
-          <div className="flex items-center justify-between gap-8">
+          <div className="flex items-center justify-between gap-8 flex-col md:flex-row">
             <div>
               <h3 className="text-2xl font-display font-bold text-dark-charcoal mb-3">{CREATIVE_CODEX.name}</h3>
               <p className="text-academic-gold font-semibold text-lg mb-3">"{CREATIVE_CODEX.tagline}"</p>
@@ -74,8 +86,12 @@ function CreativeCodexSection() {
                 Join Creative Codex
               </a>
             </div>
-            <div className="hidden md:flex flex-shrink-0">
-              <div className="text-6xl">💻</div>
+            <div className="flex-shrink-0">
+              <img
+                src={CREATIVE_CODEX_LOGO}
+                alt="Creative Codex Logo"
+                className="w-32 h-32 object-contain"
+              />
             </div>
           </div>
         </motion.div>
@@ -297,7 +313,31 @@ function PlacementsPreviewSection() {
           className="text-center mb-12"
         >
           <h2 className="section-title">Excellent Placements</h2>
-          <p className="section-subtitle">Leading companies trust our graduates</p>
+          <p className="section-subtitle">In Association with Creative Codex</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex items-center justify-center mb-8"
+        >
+          <img
+            src={CREATIVE_CODEX_LOGO}
+            alt="Creative Codex Logo"
+            className="h-12 object-contain"
+          />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="bg-gradient-to-r from-forest-green/10 to-academic-gold/10 p-6 rounded-lg text-center mb-8"
+        >
+          <p className="text-lg font-semibold text-dark-charcoal">
+            "Empowering Careers Through Innovation"
+          </p>
         </motion.div>
 
         <motion.div
@@ -354,6 +394,91 @@ function PlacementStatCard({ label, value }) {
       <p className="text-gray-600 mb-2">{label}</p>
       <p className="text-4xl font-bold text-forest-green">{value}</p>
     </div>
+  );
+}
+
+function DepartmentTimelineSection() {
+  return (
+    <section className="py-16 md:py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+          className="text-center mb-16"
+        >
+          <h2 className="section-title">Our Journey of Growth and Excellence</h2>
+          <p className="section-subtitle">Milestones that shaped our department</p>
+        </motion.div>
+
+        {/* Timeline */}
+        <div className="relative">
+          {/* Central Line */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-forest-green to-academic-gold"></div>
+
+          {/* Timeline Items */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="space-y-12 md:space-y-0"
+          >
+            {DEPARTMENT_TIMELINE.map((item, index) => (
+              <TimelineItem key={item.year} item={item} index={index} />
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TimelineItem({ item, index }) {
+  const isEven = index % 2 === 0;
+
+  return (
+    <motion.div
+      variants={cardHoverVariants}
+      custom={index}
+      className="mb-8 md:mb-0"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 items-center">
+        {/* Left side for even, right for odd */}
+        <div className={`${isEven ? 'md:col-span-1 md:text-right' : 'md:col-span-1 md:order-2'}`}>
+          <motion.div
+            initial={{ opacity: 0, x: isEven ? 20 : -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <h3 className="text-3xl font-display font-bold text-forest-green mb-2">{item.year}</h3>
+            <h4 className="text-xl font-bold text-dark-charcoal mb-2">{item.title}</h4>
+            <p className="text-gray-600">{item.description}</p>
+          </motion.div>
+        </div>
+
+        {/* Center dot */}
+        <div className="hidden md:flex justify-center">
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="relative z-10"
+          >
+            <div className="w-6 h-6 bg-forest-green rounded-full border-4 border-white shadow-lg"></div>
+          </motion.div>
+        </div>
+
+        {/* Right side for even, left for odd */}
+        <div className={`${isEven ? 'md:col-span-1 md:order-2' : 'md:col-span-1 md:text-left'}`}>
+          {/* Empty for spacing */}
+        </div>
+      </div>
+    </motion.div>
   );
 }
 
@@ -424,6 +549,13 @@ function FacultyCard({ faculty, index }) {
 }
 
 function AchievementsSection() {
+  const achievements = [
+    { title: 'National Hackathon Winners 2024', desc: 'First place in All India Championship', image: '/images/achievements/hackathon.jpg' },
+    { title: 'ACM ICPC Qualifiers', desc: '5 students qualified for regionals', image: '/images/achievements/icpc.jpg' },
+    { title: 'Inter-college Sports', desc: 'Multiple championship victories', image: '/images/achievements/sports.jpg' },
+    { title: 'Cultural Excellence', desc: 'Best technical event organizers', image: '/images/achievements/cultural.jpg' },
+  ];
+
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -445,23 +577,8 @@ function AchievementsSection() {
           variants={staggerContainer}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8"
         >
-          {[
-            { emoji: '🏆', title: 'National Hackathon Winners 2024', desc: 'First place in All India Championship' },
-            { emoji: '🥇', title: 'ACM ICPC Qualifiers', desc: '5 students qualified for regionals' },
-            { emoji: '⚽', title: 'Inter-college Sports', desc: 'Multiple championship victories' },
-            { emoji: '🎭', title: 'Cultural Excellence', desc: 'Best technical event organizers' },
-          ].map((item, index) => (
-            <motion.div
-              key={item.title}
-              variants={cardHoverVariants}
-              custom={index}
-              whileHover="hover"
-              className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-lg shadow-lg card-hover"
-            >
-              <div className="text-5xl mb-4">{item.emoji}</div>
-              <h3 className="text-xl font-bold text-dark-charcoal mb-2">{item.title}</h3>
-              <p className="text-gray-600">{item.desc}</p>
-            </motion.div>
+          {achievements.map((item, index) => (
+            <AchievementCard key={item.title} item={item} index={index} />
           ))}
         </motion.div>
 
@@ -478,6 +595,44 @@ function AchievementsSection() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function AchievementCard({ item, index }) {
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+
+  return (
+    <motion.div
+      variants={cardHoverVariants}
+      custom={index}
+      whileHover="hover"
+      className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-lg shadow-lg card-hover overflow-hidden"
+    >
+      <div className="h-48 mb-4 rounded-lg overflow-hidden bg-gray-200">
+        {imageLoaded ? (
+          <img
+            src={item.image}
+            alt={item.title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <>
+            <img
+              src={item.image}
+              alt={item.title}
+              className="hidden"
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageLoaded(false)}
+            />
+            <div className="w-full h-full flex items-center justify-center text-4xl">
+              📸
+            </div>
+          </>
+        )}
+      </div>
+      <h3 className="text-xl font-bold text-dark-charcoal mb-2">{item.title}</h3>
+      <p className="text-gray-600">{item.desc}</p>
+    </motion.div>
   );
 }
 

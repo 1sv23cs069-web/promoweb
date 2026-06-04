@@ -238,7 +238,7 @@ export const EVENTS = [
     description: 'Showcase of innovation and creativity with competitions, workshops, and innovation showcases.',
     date: 'March 2024',
     category: 'technical',
-    image: '🎯',
+    image: '/images/events/shriutsav.jpg',
     inAssociationWith: 'Creative Codex',
   },
   {
@@ -248,7 +248,7 @@ export const EVENTS = [
     description: 'Inter-departmental innovation competition fostering collaborative projects.',
     date: 'September 2024',
     category: 'innovation',
-    image: '💡',
+    image: '/images/events/iis.jpg',
     inAssociationWith: 'Creative Codex',
   },
   {
@@ -257,7 +257,7 @@ export const EVENTS = [
     description: 'Regular workshops on emerging technologies and industry trends.',
     date: 'Monthly',
     category: 'workshop',
-    image: '🛠️',
+    image: '/images/events/workshop.jpg',
     inAssociationWith: 'Creative Codex',
   },
   {
@@ -266,9 +266,95 @@ export const EVENTS = [
     description: 'Expert talks from industry professionals and alumni.',
     date: 'Quarterly',
     category: 'seminar',
-    image: '👨‍💼',
+    image: '/images/events/lecture.jpg',
     inAssociationWith: 'Creative Codex',
   },
+];
+
+export const DEPARTMENT_TIMELINE = [
+  {
+    year: 1998,
+    title: 'Department Established',
+    description: 'Foundation of CSE Department with vision to provide quality education',
+    icon: '🏛️',
+  },
+  {
+    year: 2005,
+    title: 'First Batch with 100% Placements',
+    description: 'Achieved 100% placement rate in first graduating batch',
+    icon: '🎓',
+  },
+  {
+    year: 2010,
+    title: 'Accredited by NBA',
+    description: 'National Board of Accreditation recognition for academic excellence',
+    icon: '✓',
+  },
+  {
+    year: 2015,
+    title: 'Research Center Launched',
+    description: 'Dedicated research center for innovation and development',
+    icon: '🔬',
+  },
+  {
+    year: 2020,
+    title: 'Innovation Hub Inaugurated',
+    description: 'Creative Codex club established for student innovation',
+    icon: '💡',
+  },
+  {
+    year: 2024,
+    title: 'World-Class Facilities Completed',
+    description: 'State-of-the-art labs and infrastructure inaugurated',
+    icon: '🏢',
+  },
+];
+
+export const STUDENT_EXCELLENCE = {
+  hackathons: [
+    'National Hackathon Winners 2024',
+    'Smart India Hackathon Finalists',
+    'CodeChef and CodeForces Rankings',
+    'Multiple state-level competitions',
+  ],
+  competitions: [
+    'ACM ICPC Qualifiers',
+    'Google Code Jam Participants',
+    'Inter-college Programming Contests',
+    'Cyber Security Competitions',
+  ],
+  sports: [
+    'Inter-college Cricket Champions',
+    'Badminton and Volleyball Winners',
+    'Table Tennis Tournament Victory',
+    'Marathon and Athletic Events',
+  ],
+  cultural: [
+    'Best Technical Event Organizers',
+    'Cultural Fest Coordinators',
+    'Technical Festival "Shrishtav" Success',
+    'Departmental Quiz Competition',
+  ],
+};
+
+export const EVENT_CALENDAR = [
+  { month: 'January', event: 'New Year Tech Bootcamp', type: 'Workshop', icon: '📚' },
+  { month: 'March', event: 'Shrishtav (Technical Festival)', type: 'Festival', icon: '🎪' },
+  { month: 'May', event: 'Summer Internship Talks', type: 'Seminar', icon: '💼' },
+  { month: 'July', event: 'Cloud Computing Bootcamp', type: 'Workshop', icon: '☁️' },
+  { month: 'September', event: 'IIS (Innovation Ignite Symposium)', type: 'Competition', icon: '🏆' },
+  { month: 'October', event: 'Tech Symposium', type: 'Conference', icon: '🎤' },
+  { month: 'November', event: 'Placement Drive Preparation', type: 'Workshop', icon: '💻' },
+  { month: 'December', event: 'Year-end Talent Show', type: 'Cultural', icon: '🎭' },
+];
+
+export const EVENT_HIGHLIGHTS = [
+  { title: 'Technical Excellence', image: '/images/highlights/tech.jpg', alt: 'Coding competition showcase' },
+  { title: 'Innovation in Action', image: '/images/highlights/innovation.jpg', alt: 'Student innovation projects' },
+  { title: 'Competition Success', image: '/images/highlights/competition.jpg', alt: 'Winning moments' },
+  { title: 'Team Collaboration', image: '/images/highlights/collaboration.jpg', alt: 'Students working together' },
+  { title: 'Learning Experience', image: '/images/highlights/learning.jpg', alt: 'Workshop sessions' },
+  { title: 'Excellence Celebrated', image: '/images/highlights/excellence.jpg', alt: 'Awards and recognition' },
 ];
 
 export const FACILITIES = [
