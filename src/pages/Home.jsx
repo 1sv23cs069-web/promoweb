@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, Users, BookOpen, TrendingUp, FileText } from '
 import { GOOGLE_FORM_URL, STATS, WHY_CHOOSE, RECRUITERS, FACULTY, EVENTS, FACILITIES, CREATIVE_CODEX, DEPARTMENT_TIMELINE, STUDENT_EXCELLENCE, EVENT_CALENDAR, EVENT_HIGHLIGHTS, CREATIVE_CODEX_LOGO } from '../constants';
 import { fadeUpVariants, staggerContainer, cardHoverVariants } from '../utils/animations';
 import { useCountUp, useScrollReveal } from '../utils/hooks';
+import {ACHIEVEMENTS} from '../constants';
 
 export default function Home() {
   return (
@@ -36,10 +37,10 @@ export default function Home() {
       <EventsSection />
 
       {/* Event Calendar */}
-      <EventCalendarSection />
+      {/* <EventCalendarSection /> */}
 
       {/* Event Highlights */}
-      <EventHighlightsSection />
+      {/* <EventHighlightsSection /> */}
 
       {/* Creative Codex Spotlight */}
       <CreativeCodexSection />
@@ -58,15 +59,107 @@ function CreativeCodexSection() {
     <section className="py-16 md:py-24 bg-gradient-to-br from-forest-green/5 to-academic-gold/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUpVariants}
-          className="text-center mb-12"
-        >
-          <h2 className="section-title">Supported by Creative Codex</h2>
-          <p className="section-subtitle">Many of our student achievements are facilitated through Creative Codex</p>
-        </motion.div>
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={fadeUpVariants}
+  className="bg-white rounded-3xl shadow-xl overflow-hidden"
+>
+  <div className="grid md:grid-cols-2 gap-0">
+
+    {/* Left Side */}
+    <div className="p-10 md:p-12 flex flex-col justify-center">
+
+      <div className="flex items-center gap-4 mb-6">
+        <img
+          src={CREATIVE_CODEX_LOGO}
+          alt="Creative Codex"
+          className="w-20 h-20 rounded-full border-4 border-forest-green object-cover"
+        />
+
+        <div>
+          <h3 className="text-3xl font-bold text-dark-charcoal">
+            {CREATIVE_CODEX.name}
+          </h3>
+
+          <p className="text-academic-gold font-semibold">
+            {CREATIVE_CODEX.tagline}
+          </p>
+        </div>
+      </div>
+
+      <p className="text-gray-600 leading-relaxed mb-8">
+        {CREATIVE_CODEX.description}
+      </p>
+
+      <div className="grid grid-cols-3 gap-4 mb-8">
+
+        <div className="text-center bg-gray-50 rounded-xl p-4">
+          <h4 className="text-2xl font-bold text-forest-green">
+            100+
+          </h4>
+          <p className="text-sm text-gray-500">
+            Members
+          </p>
+        </div>
+
+        <div className="text-center bg-gray-50 rounded-xl p-4">
+          <h4 className="text-2xl font-bold text-forest-green">
+            20+
+          </h4>
+          <p className="text-sm text-gray-500">
+            Events
+          </p>
+        </div>
+
+        <div className="text-center bg-gray-50 rounded-xl p-4">
+          <h4 className="text-2xl font-bold text-forest-green">
+            15+
+          </h4>
+          <p className="text-sm text-gray-500">
+            Projects
+          </p>
+        </div>
+
+      </div>
+
+      <a
+        href="/creativecodex"
+        className="btn-primary w-fit"
+      >
+        Explore Creative Codex
+      </a>
+
+    </div>
+
+    {/* Right Side */}
+
+    <div className="relative h-[400px]">
+
+      <img
+        src="/images/creativecodex/team.jpg"
+        alt="Creative Codex Team"
+        className="w-full h-full object-cover"
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+
+      <div className="absolute bottom-8 left-8 text-white">
+
+        <h4 className="text-2xl font-bold mb-2">
+          Building Future Innovators
+        </h4>
+
+        <p className="text-gray-200">
+          Hackathons • Workshops • Projects • Leadership
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</motion.div>
 
         <motion.div
           initial="hidden"
@@ -549,13 +642,6 @@ function FacultyCard({ faculty, index }) {
 }
 
 function AchievementsSection() {
-  const achievements = [
-    { title: 'National Hackathon Winners 2024', desc: 'First place in All India Championship', image: '/images/achievements/hackathon.jpg' },
-    { title: 'ACM ICPC Qualifiers', desc: '5 students qualified for regionals', image: '/images/achievements/icpc.jpg' },
-    { title: 'Inter-college Sports', desc: 'Multiple championship victories', image: '/images/achievements/sports.jpg' },
-    { title: 'Cultural Excellence', desc: 'Best technical event organizers', image: '/images/achievements/cultural.jpg' },
-  ];
-
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -567,7 +653,9 @@ function AchievementsSection() {
           className="text-center mb-12"
         >
           <h2 className="section-title">Student Achievements</h2>
-          <p className="section-subtitle">Excellence beyond academics</p>
+          <p className="section-subtitle">
+            Celebrating excellence across academics, innovation, sports and culture
+          </p>
         </motion.div>
 
         <motion.div
@@ -575,63 +663,76 @@ function AchievementsSection() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8"
+          className="grid md:grid-cols-2 gap-8"
         >
-          {achievements.map((item, index) => (
-            <AchievementCard key={item.title} item={item} index={index} />
+          {ACHIEVEMENTS.student.map((item, index) => (
+            <AchievementCard
+              key={item.title}
+              item={item}
+              index={index}
+            />
           ))}
         </motion.div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUpVariants}
-          className="text-center"
-        >
-          <a href="/achievements" className="btn-primary text-lg">
-            View All Achievements <ArrowRight size={20} />
+        <div className="text-center mt-10">
+          <a href="/achievements" className="btn-primary">
+            View All Achievements
           </a>
-        </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function StudentExcellenceSection() {
+  return (
+    <section className="py-16 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center mb-4">
+          Student Excellence
+        </h2>
+
+        <p className="text-center text-gray-600">
+          Coming Soon
+        </p>
       </div>
     </section>
   );
 }
 
 function AchievementCard({ item, index }) {
-  const [imageLoaded, setImageLoaded] = React.useState(false);
-
   return (
     <motion.div
       variants={cardHoverVariants}
       custom={index}
       whileHover="hover"
-      className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-lg shadow-lg card-hover overflow-hidden"
+      className="overflow-hidden rounded-2xl bg-white shadow-lg"
     >
-      <div className="h-48 mb-4 rounded-lg overflow-hidden bg-gray-200">
-        {imageLoaded ? (
-          <img
-            src={item.image}
-            alt={item.title}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <>
-            <img
-              src={item.image}
-              alt={item.title}
-              className="hidden"
-              onLoad={() => setImageLoaded(true)}
-              onError={() => setImageLoaded(false)}
-            />
-            <div className="w-full h-full flex items-center justify-center text-4xl">
-              📸
-            </div>
-          </>
-        )}
+      <div className="relative h-60 overflow-hidden">
+        <img
+          src={item.photo}
+          alt={item.title}
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+        <div className="absolute bottom-4 left-4">
+          <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
+            {item.category}
+          </span>
+        </div>
       </div>
-      <h3 className="text-xl font-bold text-dark-charcoal mb-2">{item.title}</h3>
-      <p className="text-gray-600">{item.desc}</p>
+
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-dark-charcoal mb-2">
+          {item.title}
+        </h3>
+
+        <p className="text-gray-600">
+          {item.description}
+        </p>
+      </div>
     </motion.div>
   );
 }
@@ -682,27 +783,39 @@ function EventsSection() {
 function EventCard({ event, index }) {
   return (
     <motion.div
-  variants={cardHoverVariants}
-  custom={index}
-  whileHover="hover"
-  className="bg-white p-8 rounded-lg shadow-lg card-hover"
->
-  <div className="text-6xl mb-4 text-center">
-    {event.image}
-  </div>
+      variants={cardHoverVariants}
+      custom={index}
+      whileHover="hover"
+      className="overflow-hidden rounded-2xl bg-white shadow-lg"
+    >
+      <div className="h-60 overflow-hidden">
+        <img
+          src={event.image}
+          alt={event.name}
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+        />
+      </div>
 
-  <h3 className="text-2xl font-bold text-dark-charcoal mb-2">
-    {event.name}
-  </h3>
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-2xl font-bold text-dark-charcoal">
+            {event.name}
+          </h3>
 
-  <p className="text-gray-600 mb-3">
-    {event.description}
-  </p>
+          <span className="text-xs bg-forest-green/10 text-forest-green px-3 py-1 rounded-full">
+            {event.category}
+          </span>
+        </div>
 
-  <p className="text-sm text-forest-green font-semibold">
-    {event.date}
-  </p>
-</motion.div>
+        <p className="text-gray-600 mb-4">
+          {event.description}
+        </p>
+
+        <p className="text-sm font-semibold text-academic-gold">
+          {event.date}
+        </p>
+      </div>
+    </motion.div>
   );
 }
 
