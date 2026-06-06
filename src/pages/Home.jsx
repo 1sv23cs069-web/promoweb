@@ -31,10 +31,10 @@ export default function Home() {
       <AchievementsSection />
 
       {/* Student Excellence */}
-      <StudentExcellenceSection />
+      {/* <StudentExcellenceSection /> */}
 
       {/* Events Section */}
-      <EventsSection />
+      {/* <EventsSection /> */}
 
       {/* Event Calendar */}
       {/* <EventCalendarSection /> */}
@@ -492,85 +492,235 @@ function PlacementStatCard({ label, value }) {
 
 function DepartmentTimelineSection() {
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUpVariants}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="section-title">Our Journey of Growth and Excellence</h2>
-          <p className="section-subtitle">Milestones that shaped our department</p>
+          <h2 className="section-title">
+            Our Journey of Growth & Excellence
+          </h2>
+
+          <p className="section-subtitle">
+            Key milestones that shaped our department
+          </p>
         </motion.div>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Central Line */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-forest-green to-academic-gold"></div>
 
-          {/* Timeline Items */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="space-y-12 md:space-y-0"
-          >
-            {DEPARTMENT_TIMELINE.map((item, index) => (
-              <TimelineItem key={item.year} item={item} index={index} />
-            ))}
-          </motion.div>
+          {/* Main Timeline Line */}
+          <div
+            className="
+              absolute
+              left-6
+              md:left-1/2
+              top-0
+              bottom-0
+              w-1
+              bg-gradient-to-b
+              from-forest-green
+              via-forest-green
+              to-academic-gold
+              md:-translate-x-1/2
+            "
+          />
+
+          <div className="space-y-16">
+
+            {DEPARTMENT_TIMELINE.map((item, index) => {
+              const isLeft = index % 2 === 0;
+
+              return (
+                <motion.div
+                  key={item.year}
+                  initial={{
+                    opacity: 0,
+                    x: isLeft ? -60 : 60,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.7,
+                    delay: index * 0.1,
+                  }}
+                  className="relative"
+                >
+
+                  {/* Desktop Layout */}
+                  <div
+                    className={`
+                      hidden md:flex
+                      items-center
+                      ${isLeft ? "justify-start" : "justify-end"}
+                    `}
+                  >
+
+                    <div className="w-[42%]">
+                      <TimelineCard item={item} />
+                    </div>
+
+                  </div>
+
+                  {/* Mobile Layout */}
+                  <div className="md:hidden ml-16">
+                    <TimelineCard item={item} />
+                  </div>
+
+                  {/* Timeline Node */}
+                  <div
+                    className="
+                      absolute
+                      top-1/2
+                      left-6
+                      md:left-1/2
+                      -translate-y-1/2
+                      md:-translate-x-1/2
+                      z-20
+                    "
+                  >
+
+                    <motion.div
+                      whileInView={{
+                        scale: [0.8, 1.3, 1],
+                      }}
+                      transition={{
+                        duration: 0.8,
+                      }}
+                      className="relative"
+                    >
+
+                      <div
+                        className="
+                          absolute
+                          inset-0
+                          rounded-full
+                          bg-forest-green
+                          animate-ping
+                          opacity-20
+                        "
+                      />
+
+                      <div
+                        className="
+                          w-7
+                          h-7
+                          rounded-full
+                          bg-white
+                          border-[5px]
+                          border-forest-green
+                          shadow-xl
+                          relative
+                          z-10
+                        "
+                      />
+
+                    </motion.div>
+                  </div>
+
+                  {/* Connector Line */}
+                  <div
+                    className={`
+                      hidden md:block
+                      absolute
+                      top-1/2
+                      h-[2px]
+                      bg-forest-green/30
+                      -translate-y-1/2
+                      ${
+                        isLeft
+                          ? "left-[42%] right-1/2"
+                          : "left-1/2 right-[42%]"
+                      }
+                    `}
+                  />
+
+                </motion.div>
+              );
+            })}
+
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function TimelineItem({ item, index }) {
-  const isEven = index % 2 === 0;
-
+function TimelineCard({ item }) {
   return (
     <motion.div
-      variants={cardHoverVariants}
-      custom={index}
-      className="mb-8 md:mb-0"
+      whileHover={{
+        y: -8,
+        scale: 1.02,
+      }}
+      transition={{
+        duration: 0.3,
+      }}
+      className="
+        bg-white
+        rounded-3xl
+        shadow-lg
+        border
+        border-gray-100
+        p-8
+        relative
+        overflow-hidden
+      "
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 items-center">
-        {/* Left side for even, right for odd */}
-        <div className={`${isEven ? 'md:col-span-1 md:text-right' : 'md:col-span-1 md:order-2'}`}>
-          <motion.div
-            initial={{ opacity: 0, x: isEven ? 20 : -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <h3 className="text-3xl font-display font-bold text-forest-green mb-2">{item.year}</h3>
-            <h4 className="text-xl font-bold text-dark-charcoal mb-2">{item.title}</h4>
-            <p className="text-gray-600">{item.description}</p>
-          </motion.div>
-        </div>
+      {/* Decorative Glow */}
+      <div
+        className="
+          absolute
+          top-0
+          right-0
+          w-32
+          h-32
+          bg-forest-green/5
+          rounded-full
+          blur-3xl
+        "
+      />
 
-        {/* Center dot */}
-        <div className="hidden md:flex justify-center">
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="relative z-10"
-          >
-            <div className="w-6 h-6 bg-forest-green rounded-full border-4 border-white shadow-lg"></div>
-          </motion.div>
-        </div>
-
-        {/* Right side for even, left for odd */}
-        <div className={`${isEven ? 'md:col-span-1 md:order-2' : 'md:col-span-1 md:text-left'}`}>
-          {/* Empty for spacing */}
-        </div>
+      {/* Icon */}
+      <div className="text-5xl mb-4">
+        {item.icon}
       </div>
+
+      {/* Year Badge */}
+      <div
+        className="
+          inline-flex
+          px-4
+          py-2
+          rounded-full
+          bg-gradient-to-r
+          from-forest-green
+          to-academic-gold
+          text-white
+          text-sm
+          font-bold
+          mb-4
+        "
+      >
+        {item.year}
+      </div>
+
+      {/* Title */}
+      <h3 className="text-2xl font-bold text-dark-charcoal mb-3">
+        {item.title}
+      </h3>
+
+      {/* Description */}
+      <p className="text-gray-600 leading-relaxed">
+        {item.description}
+      </p>
     </motion.div>
   );
 }

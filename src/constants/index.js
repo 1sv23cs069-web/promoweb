@@ -296,12 +296,13 @@ export const DEPARTMENT_TIMELINE = [
     description: 'Dedicated research center for innovation and development',
     icon: '🔬',
   },
-  {
-    year: 2020,
-    title: 'Innovation Hub Inaugurated',
-    description: 'Creative Codex club established for student innovation',
-    icon: '💡',
-  },
+ {
+  year: 2020,
+  title: 'Innovation & Research Ecosystem',
+  description:
+    'Expanded innovation initiatives, student research activities and technical communities.',
+  icon: '🚀',
+},
   {
     year: 2024,
     title: 'World-Class Facilities Completed',
