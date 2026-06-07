@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, Clock, ChevronDown } from 'lucide-react';
 import { CONTACT_INFO, GOOGLE_FORM_URL } from '../constants';
 import { fadeUpVariants, staggerContainer, cardHoverVariants } from '../utils/animations';
 
@@ -105,7 +105,7 @@ export default function Contact() {
                   variants={cardHoverVariants}
                   className="flex gap-4"
                 >
-                  <div className="text-2xl">🕐</div>
+                  <Clock className="text-forest-green flex-shrink-0 mt-1" size={24} />
                   <div>
                     <h3 className="text-lg font-bold text-dark-charcoal mb-2">Office Hours</h3>
                     <p className="text-gray-600">Monday - Friday: 9:00 AM - 5:00 PM</p>
@@ -322,8 +322,8 @@ function FAQItem({ question, answer, index }) {
         className="w-full px-6 py-4 text-left font-semibold text-dark-charcoal flex items-center justify-between hover:bg-gray-100 transition-colors"
       >
         {question}
-        <span className={`text-forest-green transition-transform ${isOpen ? 'rotate-180' : ''}`}>
-          ▼
+        <span className={`text-forest-green transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+          <ChevronDown size={18} />
         </span>
       </button>
       <motion.div
